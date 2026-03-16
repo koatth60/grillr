@@ -8,29 +8,33 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  password  String
-  createdAt DateTime @default(now())
+  id                   String   @id @default(cuid())
+  email                String   @unique
+  name                 String?
+  password             String
+  plan                 String   @default("FREE")  // FREE | PRO
+  stripeCustomerId     String?  @unique
+  stripeSubscriptionId String?  @unique
+  createdAt            DateTime @default(now())
 
-  sessions  InterviewSession[]
+  sessions InterviewSession[]
 }
 
 model InterviewSession {
   id             String   @id @default(cuid())
   jobTitle       String
   jobDescription String
+  report         String?  // AI-generated summary, populated after all questions answered
   createdAt      DateTime @default(now())
 
-  userId    String
-  user      User   @relation(fields: [userId], references: [id])
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
 
   questions Question[]
 }
 
 model Question {
-  id       String @id @default(cuid())
+  id       String  @id @default(cuid())
   text     String
   order    Int
   answer   String?

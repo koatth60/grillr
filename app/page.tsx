@@ -20,7 +20,7 @@ export default async function HomePage() {
           Paste any job description, get AI-generated questions tailored to the
           role, answer them, and receive instant expert feedback.
         </p>
-        <div className="flex gap-4 justify-center pt-4">
+        <div className="flex gap-4 justify-center pt-4 flex-wrap">
           <Link
             href="/register"
             className="bg-purple-600 hover:bg-purple-500 text-white font-semibold px-8 py-3 rounded-lg transition-colors"
@@ -32,6 +32,12 @@ export default async function HomePage() {
             className="border border-slate-600 hover:border-slate-400 text-slate-300 font-semibold px-8 py-3 rounded-lg transition-colors"
           >
             Sign In
+          </Link>
+          <Link
+            href="/pricing"
+            className="text-slate-400 hover:text-white font-semibold px-8 py-3 rounded-lg transition-colors"
+          >
+            Pricing
           </Link>
         </div>
 
